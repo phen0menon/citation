@@ -1,0 +1,21 @@
+# General
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+profile_default/
+ipython_config.py
+.python-version
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# IDEs
+.vscode
+.idea
