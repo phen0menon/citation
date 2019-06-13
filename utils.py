@@ -11,6 +11,7 @@ def parse_file(filename):
     for line in fstream:
         articles = line.split()
         articles_list = list(map(int, articles))
+
         article_vertex_in = articles_list.pop(0)
         parsed_data[article_vertex_in].extend(articles_list)
 

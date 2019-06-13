@@ -9,14 +9,24 @@ class Graph:
         Makes a dictionary, 
         where key is a degree, 
         where value is a number of elements with this degree
+
+        :return: dict
         """
-        degree_dict = defaultdict(int)
+        self.degree_dict = defaultdict(int)
+        vertices_degree_dict = defaultdict(int)
 
-        for vertex in self.data.keys():
-            curr_degree = len(self.data[vertex])
-            degree_dict[curr_degree] += 1
+        for vertices_in in self.data.values():
+            for vertex_in in vertices_in:
+                vertices_degree_dict[vertex_in] += 1
 
-        self.degree_dict = degree_dict
+        for degree in vertices_degree_dict.values():
+            self.degree_dict[degree] += 1
+
+    def normalize_degree_dict(self):
+        degree_sum = sum(self.degree_dict.keys())
+
+        for degree in self.degree_dict.keys():
+            print(degree / degree_sum, end='\t')
 
     def get_degree_dict(self):
         """

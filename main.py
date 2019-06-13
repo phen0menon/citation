@@ -10,7 +10,7 @@ def init():
 
     graph = Graph(adj_list)
     graph.make_degree_dict()
-
+    graph.normalize_degree_dict()
 
 if __name__ == "__main__":
     init()
