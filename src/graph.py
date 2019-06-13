@@ -1,7 +1,10 @@
 from collections import defaultdict
 
+
 class Graph:
     def __init__(self, data):
+        self.normalized_list = list()
+        self.degree_dict = defaultdict(int)
         self.data = data
 
     def make_degree_dict(self):
@@ -12,7 +15,6 @@ class Graph:
 
         :return: dict
         """
-        self.degree_dict = defaultdict(int)
         vertices_degree_dict = defaultdict(int)
 
         for vertices_in in self.data.values():
@@ -22,14 +24,25 @@ class Graph:
         for degree in vertices_degree_dict.values():
             self.degree_dict[degree] += 1
 
-    def normalize_degree_dict(self):
+        return self
+
+    def make_normalized_degree_dict(self):
         degree_sum = sum(self.degree_dict.keys())
 
         for degree in self.degree_dict.keys():
-            print(degree / degree_sum, end='\t')
+            self.normalized_list.append(degree / degree_sum)
+
+        return self
+
+    def get_average_degree(self):
+        degrees = self.degree_dict.keys()
+        degree_sum = sum(degrees)
+        degrees_count = len(degrees)
+
+        return degree_sum / degrees_count
+
+    def get_normalized_degree_dict(self):
+        return self.normalized_list
 
     def get_degree_dict(self):
-        """
-        :return: dict
-        """
         return self.degree_dict
