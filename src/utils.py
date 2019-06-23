@@ -1,7 +1,7 @@
 from collections import defaultdict
-from scipy.stats import binom
 
 import numpy as np
+from numpy import random
 
 
 def parse_file(filename):
@@ -21,10 +21,6 @@ def parse_file(filename):
     return parsed_data
 
 
-def binominal_probability(k, n, p):
-    return binom.pmf(k, n, p)
-
-
 def generate_random_graph(nodes_count, prob):
     labels_set = defaultdict(set)
     vertices = range(nodes_count)
@@ -32,16 +28,21 @@ def generate_random_graph(nodes_count, prob):
     for i in vertices:
         for j in vertices:
             if i != j:
-                prob_a = np.random.sample()
-
-                if prob_a < prob:
+                if prob > random.sample():
                     labels_set[i].add(j)
 
-                prob_a = np.random.sample()
-
-                if prob_a < prob:
+                if prob > random.sample():
                     labels_set[j].add(i)
 
     labels_list = {k: list(v) for k, v in labels_set.items()}
 
     return labels_list
+
+
+def make_complete_graph(nodes_count):
+    graph = dict()
+
+    for node in range(nodes_count):
+        graph[node] = list(set([node_in for node_in in range(nodes_count) if node != node_in]))
+
+    return graph

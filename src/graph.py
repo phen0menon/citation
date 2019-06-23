@@ -24,15 +24,12 @@ class Graph:
         for degree in vertices_degree_dict.values():
             self.degree_dict[degree] += 1
 
-        return self
+        return self.degree_dict
 
-    def make_normalized_degree_dict(self):
+    def make_normalized_degree_list(self):
         degree_sum = sum(self.degree_dict.keys())
 
-        for degree in self.degree_dict.keys():
-            self.normalized_list.append(degree / degree_sum)
-
-        return self
+        return [degree / degree_sum for degree in self.degree_dict.keys()]
 
     def get_average_degree(self):
         degrees = self.degree_dict.keys()
