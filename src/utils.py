@@ -43,6 +43,8 @@ def make_complete_graph(nodes_count):
     graph = dict()
 
     for node in range(nodes_count):
-        graph[node] = list(set([node_in for node_in in range(nodes_count) if node != node_in]))
+        graph[node] = list(
+            set([node_in for node_in in range(nodes_count) if node != node_in])
+        )
 
     return graph

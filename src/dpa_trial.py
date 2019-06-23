@@ -21,7 +21,9 @@ class DPATrial:
         each node number
         """
         self._num_nodes = num_nodes
-        self._node_numbers = [node for node in range(num_nodes) for dummy_idx in range(num_nodes)]
+        self._node_numbers = [
+            node for node in range(num_nodes) for _ in range(num_nodes)
+        ]
 
     def run_trial(self, num_nodes):
         """
@@ -37,7 +39,7 @@ class DPATrial:
 
         # compute the neighbors for the newly-created node
         new_node_neighbors = set()
-        for dummy_idx in range(num_nodes):
+        for _ in range(num_nodes):
             new_node_neighbors.add(random.choice(self._node_numbers))
 
         # update the list of node numbers so that each node number
